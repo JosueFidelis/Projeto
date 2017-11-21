@@ -1,3 +1,5 @@
+package Playlists;
+import Exceptions.PlaylistNaoEncontradaException;
 
 public abstract class Playlist {
 	private String nome;
@@ -6,9 +8,11 @@ public abstract class Playlist {
 		this.nome = nome;
 	}
 	public abstract String adicionar(Musica musica);
-	public abstract String remover(String musica) throws MusicaNaoEncontradaException;
+	public abstract String remover(String musica) throws PlaylistNaoEncontradaException;
+	public abstract String listar();
 	public String getNome()
 	{
 		return this.nome;
 	}
+	
 }

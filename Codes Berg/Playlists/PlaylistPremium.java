@@ -1,3 +1,6 @@
+package Playlists;
+
+import Exceptions.PlaylistNaoEncontradaException;
 
 public class PlaylistPremium extends Playlist {
 	Musica musica;
@@ -20,7 +23,7 @@ public class PlaylistPremium extends Playlist {
 	}
 
 	
-	public String remover(String musica) throws MusicaNaoEncontradaException {
+	public String remover(String musica) throws PlaylistNaoEncontradaException {
 		if(this.musica != null)
 		{
 			if(this.musica.getNome().equals(musica)) {
@@ -29,12 +32,19 @@ public class PlaylistPremium extends Playlist {
 				return proximo.remover(musica);
 			}
 		}else {
-			MusicaNaoEncontradaException e;
-			e = new MusicaNaoEncontradaException(musica);
+			PlaylistNaoEncontradaException e;
+			e = new PlaylistNaoEncontradaException(musica);
 			return e.getMessage();
 		}
 		
 		
 	}
-
+	public String listar() {
+		if(this.musica == null)
+		{
+			return "";
+		}else {
+			return this.musica.getNome() +"/n"+proximo.listar();
+		}
+	}
 }
