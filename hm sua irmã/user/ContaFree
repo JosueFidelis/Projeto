@@ -1,0 +1,31 @@
+public class ContaFree extends ClasseAbstrataUser {
+	// private RepositorioPlaylistsArray playlists[];
+	
+	public ContaFree(String login, String numeroCartao) {
+		super(login, numeroCartao);
+		this.setPlano("Free");
+	}
+
+	public String trocarPlano() {
+		new ContaPremium(this.getLogin(), this.getNumeroCartao());
+		return "Sua conta Free agora é Premium!";
+	}
+	
+	/*	public adicionarPlaylist(String x) {
+	this.playlists.addPLaylist(x);
+}
+
+public removerPLaylist(String x){
+	this.playlists.removePlaylist(x);
+}
+
+public void ouvirPLaylist(String x) {
+	this.playlists.Listen(x);
+}
+
+public void escutarMusica(String x) {
+	this.playlists.procurar(x);	
+}
+*/
+	
+}
