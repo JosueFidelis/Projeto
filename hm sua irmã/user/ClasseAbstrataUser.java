@@ -14,6 +14,8 @@ public abstract class ClasseAbstrataUser {
 		this.numSeguindo = 0;
 	}
 	
+	public abstract String trocarPlano();
+	
 	public String getLogin() {
 		return this.login;
 	}
@@ -40,5 +42,35 @@ public abstract class ClasseAbstrataUser {
 	
 	public String getSeguindo() {
 		return this.seguidores.imprimir();
+	}
+	
+	public void setPlano(String x) {
+		this.plano = x;
+	}
+	
+	public String Seguir(String x) {
+		this.seguidores.inserir(x);
+		this.numSeguidores++;
+		return "Você agora está seguindo " + x + "!";
+	}
+	
+	public String deixarDeSeguir(String x) {
+		this.seguidores.remover(x);
+		this.numSeguindo--;
+		return "Você deixou de seguir " + x + ".";
+	}
+	
+	public String serSeguido(String x) {
+		this.seguidores.inserir(x);
+		return this.getLogin() + "agora está sendo seguido por " + x + ".";
+ 	}
+	public String alterarLogin(String x) {
+		this.login = x;
+		return "Seu login foi alterado com sucesso para " + x + ".";
+	}
+	
+	public String alterarNumeroCartao(String x) {
+		this.numeroCartao = x;
+		return "O numero do seu cartao foi alterado com sucesso para " + x + ".";
 	}
 }
