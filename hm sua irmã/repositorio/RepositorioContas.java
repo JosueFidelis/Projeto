@@ -4,8 +4,8 @@ import excecoes.Erou;
 import user.ClasseAbstrataUser;
 
 public interface RepositorioContas {
-	String inserir(ClasseAbstrataUser conta);
-	String remover(ClasseAbstrataUser conta)throws Erou;
-	boolean procurar(ClasseAbstrataUser conta);
+	String inserir(ClasseAbstrataUser conta, int i);
+	String remover(ClasseAbstrataUser conta, int i)throws Erou;
+	boolean procurar(ClasseAbstrataUser conta, int i);
 	
 }
