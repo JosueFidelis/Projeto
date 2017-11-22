@@ -1,6 +1,7 @@
 package user;
 
 import repositorio.RepositorioStringLista;
+import excecoes.Erou;
 
 public abstract class ClasseAbstrataUser {
 	private String login, numeroCartao, plano;
@@ -37,11 +38,11 @@ public abstract class ClasseAbstrataUser {
 	}
 	
 	public String getSeguidores() {
-		return this.seguidores.imprimir();
+		return this.seguidores.imprimir(0);
 	}
 	
 	public String getSeguindo() {
-		return this.seguidores.imprimir();
+		return this.seguindo.imprimir(0);
 	}
 	
 	public void setPlano(String x) {
@@ -49,21 +50,26 @@ public abstract class ClasseAbstrataUser {
 	}
 	
 	public String Seguir(String x) {
-		this.seguidores.inserir(x);
+		this.seguidores.inserir(x, 0);
 		this.numSeguidores++;
 		return "Você agora está seguindo " + x + "!";
 	}
 	
-	public String deixarDeSeguir(String x) {
-		this.seguidores.remover(x);
+	public String deixarDeSeguir(String x) throws Erou {
+		this.seguidores.remover(x, 0);
 		this.numSeguindo--;
 		return "Você deixou de seguir " + x + ".";
 	}
 	
 	public String serSeguido(String x) {
-		this.seguidores.inserir(x);
+		this.seguidores.inserir(x, 0);
+		this.numSeguidores++;
 		return this.getLogin() + "agora está sendo seguido por " + x + ".";
  	}
+	
+	public String deixarDeSerSeguido(String x) throws Erou {
+			return this.seguidores.remover(x, 0);
+	}
 	public String alterarLogin(String x) {
 		this.login = x;
 		return "Seu login foi alterado com sucesso para " + x + ".";
