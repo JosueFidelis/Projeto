@@ -1,6 +1,7 @@
 package repositorio;
 
 import interfaces.RepositorioString;
+import excecoes.Erou;
 
 public class RepositorioStringLista implements RepositorioString{
 	private String nome;
@@ -10,27 +11,35 @@ public class RepositorioStringLista implements RepositorioString{
 		this.nome = null;
 		this.proximo = null;
 	}
-	public String imprimir() {
-		return "hm sua irmã";
+	public String imprimir(int i) {
+		if(this.nome == null) {
+			return null;
+		}else {
+			return this.getNome() + "\n" + this.proximo.imprimir(i);
+		}
 	}
 
-	public void inserir(String x) {
+	public String getNome() {
+		return this.nome;
+	}
+	public void inserir(String x, int i) {
 		if(this.nome == null) {
 			this.nome = x;
 			this.proximo = new RepositorioStringLista();
 		}else {
-			this.proximo.inserir(x);
+			this.proximo.inserir(x, i);
 		}
 	}
 
-	public void remover(String x) {
+	public String remover(String x, int i) throws Erou {
 		if(this.nome == null) {
-			return;
+			return new Erou().getMessage();
 		}else if(this.nome.equals(x)){
 			this.nome = this.proximo.nome;
 			this.proximo = this.proximo.proximo;
+			return null;
 		}else {
-			this.proximo.remover(x);
+			return this.proximo.remover(x, i);
 		}
 	}
 	
