@@ -1,6 +1,6 @@
-package repositorio;
+package repositorios;
 
-mport excecoes.Erou;
+import excecoes.ErouException;
 import user.ClasseAbstrataUser;
 import interfaces.RepositorioContas;
 
@@ -24,27 +24,27 @@ public class RepositorioContasLista implements RepositorioContas {
 		}
 	}
 
-	public String remover(ClasseAbstrataUser conta, int i) throws Erou {
+	public String remover(String x, int i) throws ErouException {
 		if (this.conta == null) {
-			Erou e;
-			e = new Erou();
-			return e.getMessage();
-		} else if (this.conta == conta) {
+			ErouException e;
+			e = new ErouException();
+			throw e;
+		} else if (this.conta.getLogin().equals(x)) {
 			this.conta = this.proximo.conta;
 			this.proximo = this.proximo.proximo;
-			return "Conta " + conta.getLogin() + " removida com sucesso.";
+			return "Conta " + x + " removida com sucesso.";
 		} else {
-			return this.proximo.remover(conta, i);
+			return this.proximo.remover(x, i);
 		}
 	}
 
-	public boolean procurar(ClasseAbstrataUser conta, int i) {
-		if (this.conta == null) {
-			return false;
-		} else if (this.conta == conta) {
-			return true;
+	public ClasseAbstrataUser procurar(String x, int i) throws ErouException {
+		if (this.conta.getLogin() == null) {
+			throw new ErouException();
+		} else if (this.conta.getLogin().equals(x)) {
+			return this.conta;
 		} else {
-			return this.procurar(conta, i);
+			return this.proximo.procurar(x, i);
 		}
 
 	}
