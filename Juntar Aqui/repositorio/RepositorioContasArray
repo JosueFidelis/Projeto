@@ -1,0 +1,44 @@
+import excecoes.Erou;
+import interfaces.RepositorioContas;
+import user.ClasseAbstrataUser;
+
+public class RepositorioContasArray implements RepositorioContas {
+	private ClasseAbstrataUser conta[];
+	
+	public RepositorioContasArray() {
+		this.conta = new ClasseAbstrataUser[9999999];
+	}
+	public String inserir(ClasseAbstrataUser conta, int i) {
+		if(this.conta[i] == null) {
+			this.conta[i] = conta;
+			return "Conta " + this.conta[i].getLogin() + " registrada com sucesso!";
+		}else {
+			return this.inserir(conta, i + 1);
+		}
+	}
+
+	
+	public String remover(ClasseAbstrataUser conta, int i) throws Erou {
+		if(this.conta[i] == null) {
+			Erou e = new Erou();
+			return e.getMessage();
+		}else if (this.conta[i] == conta) {
+			return "Conta " + conta.getLogin() + " foi removida com sucesso.";
+		}else {
+			return this.remover(conta, i + 1);
+		}
+		
+	}
+
+
+	public boolean procurar(ClasseAbstrataUser conta, int i) {
+			if(this.conta[i] == null) {
+				return false;
+			}else if(this.conta[i] == conta) {
+				return true;
+			}else {
+				return this.procurar(conta, i + 1);
+			}
+	}
+
+}
