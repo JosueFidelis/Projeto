@@ -12,6 +12,7 @@ public class Spotify {
 	private NegocioUser user;
 	public Spotify(boolean islist) {
 		playlist =new NegocioPlaylist(islist);
+		user = new NegocioUser(islist);
 	}
 	public void criarPlaylist(String nome,boolean ispremium)
 	{
