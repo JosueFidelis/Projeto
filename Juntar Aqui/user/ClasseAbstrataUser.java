@@ -72,11 +72,6 @@ public abstract class ClasseAbstrataUser {
 		return this.seguidores.remover(x, 0);
 	}
 
-	public String alterarLogin(String x) {
-		this.login = x;
-		return "Seu login foi alterado com sucesso para " + x + ".";
-	}
-
 	public String alterarNumeroCartao(String x) {
 		this.numeroCartao = x;
 		return "O numero do seu cartao foi alterado com sucesso para " + x + ".";

@@ -1,15 +1,19 @@
 package user;
 
 import Exceptions.CartaoInvalidoException;
+import Playlists.PlaylistPremium;
 
 public class ContaPremium extends ClasseAbstrataUser {
 	private int tempoAssinatura;
-	// private RepositorioPlaylistsLista playlists;
+	private PlaylistPremium playlists[];
+	private int nplays;
 
 	public ContaPremium(String login, String numeroCartao) {
 		super(login, numeroCartao);
 		this.setPlano("Premium");
 		this.tempoAssinatura = 30;
+		playlists = new PlaylistPremium[20];
+		nplays = 0;
 	}
 
 	public String trocarPlano() {

@@ -2,9 +2,9 @@ package Negocio;
 import Exceptions.ANEException;
 import Exceptions.AJCException;
 import Artista.Artista;
-import Artista.RepositorioArtistas;
-import Artista.RepositorioArtistasLista;
-import Artista.RepositorioArtistasArray;
+import repositorio.RepositorioArtistas;
+import repositorio.RepositorioArtistasLista;
+import repositorio.RepositorioArtistasArray;
 
 public class NegocioArtista {
        private RepositorioArtistas list;

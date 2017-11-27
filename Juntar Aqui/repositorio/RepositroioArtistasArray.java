@@ -1,3 +1,6 @@
+package repositorio;
+import Artista.Artista;
+import Exceptions.ANEException;
 
 public class RepositroioArtistasArray {
 	private Artista[] artistas;

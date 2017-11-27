@@ -1,5 +1,6 @@
-package Artista;
+package repositorio;
 
+import Artista.Artista;
 import Exceptions.AJCException;
 import Exceptions.ANEException;
 

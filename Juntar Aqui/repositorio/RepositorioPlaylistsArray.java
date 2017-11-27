@@ -16,7 +16,7 @@ public class RepositorioPlaylistsArray implements RepositorioPlaylists {
 			 pf = new PlaylistFree(playlist);
 		else
 			pf = new PlaylistPremium(playlist);
-		if(this.index == this.playlist.length)
+		if(this.index != this.playlist.length)
 		{
 		this.playlist[index] = pf;
 		index++;
@@ -25,9 +25,10 @@ public class RepositorioPlaylistsArray implements RepositorioPlaylists {
 			for(int i = 0;i<index;i++) {
 				playlistr[i] = this.playlist[i];
 			}
-			index++;
+			
 			this.playlist = playlistr;
 			this.playlist[index] = pf;
+			index++;
 		}
 	
 	}

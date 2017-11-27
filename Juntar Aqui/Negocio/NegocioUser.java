@@ -28,8 +28,8 @@ public class NegocioUser {
 		return this.x.procurar(x, 0);
 	}
 	
-	public String conectarMetodos(String x, String y, int i) throws ErouException, ComandoInvalidoException {
-		ClasseAbstrataUser c = this.x.procurar(x, i);
+	public String conectarMetodos(String x, String y) throws ErouException, ComandoInvalidoException {
+		ClasseAbstrataUser c = this.x.procurar(x, 0);
 		return c.distribuidor(x, y);
 
 	}
