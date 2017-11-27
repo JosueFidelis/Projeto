@@ -1,13 +1,22 @@
 package ISpotifai;
 
 import Exceptions.PlaylistNaoEncontradaException;
+import Exceptions.RadioNaoEncontradaException;
+import Musica.Musica;
 import Negocio.NegocioPlaylist;
+import Negocio.NegocioRadio;
 import Negocio.NegocioUser;
 import Negocio.NegocioArtista;
+import Negocio.NegocioMusica;
 import Artista.Artista;
 import Playlists.Playlist;
+import Radio.Radio;
+import repositorio.RepositorioMusicas;
 import user.ClasseAbstrataUser;
 import Exceptions.ErouException;
+import Exceptions.NaoEncontradaException;
+import Exceptions.NaoHaGeneroException;
+import Exceptions.NaoHaMusicasException;
 import Exceptions.ComandoInvalidoException;
 import Exceptions.AJCException;
 import Exceptions.ANEException;
@@ -16,10 +25,34 @@ public class Spotify {
 	private NegocioPlaylist playlist;
 	private NegocioUser user;
 	private NegocioArtista artista;
+	private NegocioMusica musica;
+	private NegocioRadio radio;
 	public Spotify(boolean islist) {
 		playlist =new NegocioPlaylist(islist);
 		user = new NegocioUser(islist);
+		artista = new NegocioArtista(islist);
+		musica = new NegocioMusica(islist);
+		radio = new NegocioRadio(islist);
 	}
+	//Musicas
+	public String inserir(String nome,String genero,String artista,int duracao) {
+		return this.musica.inserir(new Musica(nome,artista,genero,duracao));
+	}
+	public String remover(String nome,String genero,String artista,int duracao) throws NaoEncontradaException{
+		return this.musica.remover(new Musica(nome,artista,genero,duracao));
+	}
+	public String tocar(String nome,String genero,String artista,int duracao) throws NaoEncontradaException{
+		return this.musica.tocar(new Musica(nome,artista,genero,duracao));
+	}
+	public boolean buscar(String nome,String genero,String artista,int duracao) throws NaoEncontradaException{
+		return this.musica.buscar(new Musica(nome,artista,genero,duracao));
+	}
+	//convem criar public listar (repositorioLista/Array)
+	
+	
+	
+	//fim-musicas
+	
 	//Playlists
 	public void criarPlaylist(String nome,boolean ispremium)
 	{
@@ -151,4 +184,17 @@ public class Spotify {
 		artista.atualizarArtista(nome,b,c);
 	}
 	//fim Artistas
+	
+	// Radio
+	
+	public Radio buscarRadio (String genero) throws RadioNaoEncontradaException {
+		return this.radio.buscarRadio(genero);
+	}
+	public void removerRadio (String genero) throws RadioNaoEncontradaException {
+		this.radio.remover(genero);
+	}
+	public Radio criarRadio (String genero, int i) throws NaoHaGeneroException {
+		return radio.criarRadio(genero, musica.getRep(), i);
+	}
+	//fim Radio
 }

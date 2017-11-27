@@ -1,6 +1,7 @@
-package nopee;
+package repositorio;
 
 import Exceptions.NaoEncontradaException;
+import Musica.Musica;
 
 public class RepositorioMusicaLista implements RepositorioMusicas {
 

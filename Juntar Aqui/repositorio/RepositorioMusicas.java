@@ -1,6 +1,7 @@
-package nopee;
+package repositorio;
 
 import Exceptions.NaoEncontradaException;
+import Musica.Musica;
 
 public interface RepositorioMusicas {
 	public String inserir(Musica musica);

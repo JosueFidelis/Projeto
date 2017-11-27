@@ -1,6 +1,8 @@
 package Radio;
 import java.util.Random;
 import Exceptions.*;
+import Musica.Musica;
+
 
 public class ListaMusicaRadio {
 	private Musica musica;

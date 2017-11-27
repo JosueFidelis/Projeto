@@ -1,6 +1,7 @@
 package Playlists;
 
 import Exceptions.PlaylistNaoEncontradaException;
+import Musica.Musica;
 
 public class PlaylistPremium extends Playlist {
 	Musica musica;
@@ -11,9 +12,9 @@ public class PlaylistPremium extends Playlist {
 		
 	}
 
-	public String adicionar(String musica){
+	public String adicionar(Musica musica){
 		if(this.musica == null) {
-			Musica a= new Musica(musica);
+			Musica a= musica;
 			this.musica = a;
 			this.proximo = new PlaylistPremium(this.getNome());
 		}else {

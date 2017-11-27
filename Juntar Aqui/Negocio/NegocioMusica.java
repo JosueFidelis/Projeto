@@ -1,7 +1,11 @@
-package Negócios;
+package Negocio;
 
 import Exceptions.NaoEncontradaException;
-import nopee.*;
+import Musica.Musica;
+import repositorio.RepositorioMusicaArray;
+import repositorio.RepositorioMusicaLista;
+import repositorio.RepositorioMusicas;
+
 
 public class NegocioMusica {
 	private RepositorioMusicas lista;

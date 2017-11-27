@@ -1,6 +1,7 @@
 package Playlists;
 
 import Exceptions.PlaylistNaoEncontradaException;
+import Musica.Musica;
 
 public class PlaylistFree extends Playlist{
 	private Musica[] musicas ;
@@ -14,10 +15,10 @@ public class PlaylistFree extends Playlist{
 		index = 0;
 	}
 	
-	public String adicionar(String musica){
+	public String adicionar(Musica musica){
 			
 			try {
-				Musica a = new Musica(musica);
+				Musica a = musica;
 				this.musicas[index] = a;
 				index ++;
 				return "Musica "+musica+" adicionada à playlist.";
